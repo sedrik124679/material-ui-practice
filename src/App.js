@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+    Container,
+    Paper,
+} from "@mui/material";
+import Header from "./components/Header/Header";
+import SearchBar from "./components/SearchBar/SearchBar";
+import React, {useState} from 'react';
+import ToggleColorMode from "./Context/ThemeState";
+import CardBlock from "./components/CardBlock/CardBlock";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+
+    const [data, setData] = useState([])
+    console.log(data)
+
+    return (
+        <ToggleColorMode>
+            <Paper sx={{minHeight: '100vh', borderRadius: '0'}}>
+                <Container>
+                    <Header />
+                    <SearchBar setData={ setData }/>
+                    <CardBlock data={ data }/>
+                </Container>
+            </Paper>
+        </ToggleColorMode>
+    );
+};
 
 export default App;
